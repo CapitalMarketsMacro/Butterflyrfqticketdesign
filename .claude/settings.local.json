@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm list:*)",
+      "Bash(sort -u -t@ -k1,1)",
+      "Bash(node -e \":*)",
+      "Bash(rm _tmp_npm.json)",
+      "Bash(node -e \"const data = require\\(''./_tmp_npm.json''\\); const result = new Map\\(\\); function walk\\(deps\\) { if \\(!deps\\) return; for \\(const [name, info] of Object.entries\\(deps\\)\\) { if \\(info.version && !result.has\\(name\\)\\) result.set\\(name, info.version\\); walk\\(info.dependencies\\); } } walk\\(data.dependencies\\); const lines = [...result.entries\\(\\)].sort\\(\\(a,b\\)=>a[0].localeCompare\\(b[0]\\)\\).map\\(\\([n,v]\\)=>n+'',''+v\\); const out = [''package,version'', ...lines].join\\(''\\\\n''\\); require\\(''fs''\\).writeFileSync\\(''npm-list.txt'', out + ''\\\\n''\\); console.log\\(''Total: '' + lines.length\\);\")",
+      "Bash(node:*)"
+    ]
+  }
+}
